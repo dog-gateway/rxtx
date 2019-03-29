@@ -1,11 +1,14 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: org.rxtx
 Bundle-ManifestVersion: 2
 Bundle-Name: RXTX
 Bundle-SymbolicName: org.rxtx
-Bundle-Version: 2.2
+Bundle-Version: 2.2.1
 Bundle-ClassPath: lib/RXTXcomm.jar
-Export-Package: gnu.io;version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: gnu.io;version="1.0.0",
+ org.doggateway.serial
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.service.log
 Bundle-NativeCode: 
  nativelib/linux/armv71/librxtxSerial.so;
  osname=Linux; processor=arm,
