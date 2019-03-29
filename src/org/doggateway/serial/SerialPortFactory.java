@@ -60,7 +60,9 @@ public class SerialPortFactory
      */
     public static SerialPort getPort(String portName, int timeout, int baudRate,
             int dataBits, int stopbits, int parity, Logger logger)
-            throws Exception
+            throws UnsupportedCommOperationException, NoSuchPortException,
+            PortInUseException
+
     {
         // the serial port reference, initially null
         SerialPort serialPort = null;
@@ -102,15 +104,14 @@ public class SerialPortFactory
                     // data = 8 byte
                     // stop bit = 1
                     // parity = none
-                    serialPort.setSerialPortParams(baudRate, dataBits,
-                            stopbits, parity);
+                    serialPort.setSerialPortParams(baudRate, dataBits, stopbits,
+                            parity);
                 }
                 else
                 {
                     if (logger != null)
                     {
-                        logger.error(
-                                "Error while opening and setting up "
+                        logger.error("Error while opening and setting up "
                                 + "the serial port.");
                     }
                 }
@@ -121,10 +122,8 @@ public class SerialPortFactory
         {
             if (logger != null)
             {
-                logger.error(
-                        "Exception while opening the serial port "
-                        + "for communication:\n {}",
-                        e);
+                logger.error("Exception while opening the serial port "
+                        + "for communication:\n {}", e);
             }
             // rethrow
             throw e;
